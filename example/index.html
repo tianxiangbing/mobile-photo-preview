@@ -1,0 +1,27 @@
+﻿<!DOCTYPE>
+<html>
+	<head>
+		<title>图片预览</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link rel="stylesheet" type="text/css" href="../dist/dialog.min.css">
+		<link rel="stylesheet" type="text/css" href="../dist/mobile-photo-preview.min.css">
+		<script type="text/javascript" src="../dist/zepto.min.js"></script>
+		<script type="text/javascript" src="../dist/dialog-jquery.js"></script>
+		<script type="text/javascript" src="../dist/mobile-photo-preview.js"></script>
+		<style>
+		.preview-list img{width: 100px;height:100px;}
+		.preview-list a{display: inline-block;}
+		</style>
+	</head>
+	<body>
+		<div class="preview-list">
+			<a href="http://ott.wansecheng.com/weidian/wdgoods/1421661435860.jpg" class="preview" data-size="200*200"><img src="http://ott.wansecheng.com/weidian/wdgoods/1421661435860.jpg"></a>
+			<a href="http://ott.wansecheng.com/weidian/wdgoods/1421661435860.jpg" class="preview" data-size="200*200"><img src="http://ott.wansecheng.com/weidian/wdgoods/1421661435860.jpg"></a>
+			<a href="http://ott.wansecheng.com/weidian/wdgoods/1421661435860.jpg" class="preview" data-size="200*200"><img src="http://ott.wansecheng.com/weidian/wdgoods/1421661435860.jpg"></a>
+		</div>
+		<script>
+		var photoPreview = new MobilePhotoPreview();
+		photoPreview.init({target:$('.preview-list'),trigger:'.preview'});
+		</script>
+	</body>
+</html>

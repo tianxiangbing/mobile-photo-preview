@@ -1,0 +1,19 @@
+{
+  "family": "tianxiangbing",
+  "name": "mobile-select-area",
+  "description": "mobile图片预览",
+  "version": "1.0.0",
+  "git": "https://github.com/tianxiangbing/mobile-photo-preview",
+  "author": {
+    "name": "田想兵",
+    "email": "55342775@qq.com",
+    "url": "http://www.lovewebgames.com/jsmodule/mobile-photo-preview.html"
+  },
+  "devDependencies": {
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-cssmin": "^0.12.2",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-contrib-watch": "^0.6.1"
+  }
+}
