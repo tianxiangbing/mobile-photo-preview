@@ -121,9 +121,10 @@ MobilePhotoPreview.prototype = {
 		$(_this.imgPreview)[noanimate]({
 			left: -left,
 			top: 0
-		}, 500);
+		}, 200);
 		var c = _this.dialog.dialogContainer;
-		$('.imgViewTop', c).html((_this.currentIndex + 1) + '/' + _this.arr.length);
+		$('.imgViewTop em', c).html((_this.currentIndex + 1) + '/' + _this.arr.length);
+		_this.current = $(_this.arr[_this.currentIndex]);
 		_this.settings.callback && _this.settings.callback.call(_this, _this.objArr[_this.currentIndex], _this.currentIndex);
 	},
 	initDailog: function(target) {
@@ -134,7 +135,7 @@ MobilePhotoPreview.prototype = {
 		_this.sum = _this.arr.length;
 		_this.currentIndex = $(target).index();
 		var options = $.extend({
-			target: '<div class="imgViewTop">' + (_this.currentIndex + 1) + '/' + _this.sum + '</div><div class="pos-relative"><div id="imgPreview"></div></div><div id="imgTitle"></div>',
+			target: '<div class="imgViewTop"><em>' + (_this.currentIndex + 1) + '/' + _this.sum + '</em></div><div class="pos-relative"><div id="imgPreview"></div></div><div id="imgTitle"></div>',
 			animate: true,
 			show: true,
 			width: '100%',
@@ -143,16 +144,24 @@ MobilePhotoPreview.prototype = {
 			className: "ui-preview",
 			afterHide: function(c) {
 				this.dispose();
+				_this.settings.hide && _this.settings.hide();
+			},
+			beforeHide:function(){
+				var cur = _this.imgPreview.children()[_this.currentIndex];
+				$(cur).siblings().hide();
 			},
 			beforeShow: function(c) {
 				_this.imgPreview = $('#imgPreview', c);
 				_this.format(c);
 				_this.bindSlide();
 				_this.go(true);
-				_this.settings.show&&_this.settings.show(_this.dialog.dialogContainer);
+				_this.settings.show && _this.settings.show(_this.dialog.dialogContainer);
 			}
 		}, {});
 		_this.dialog.init(options);
+	},
+	hide:function(){
+		this.dialog.hide();
 	},
 	format: function(c) {
 		var _this = this;

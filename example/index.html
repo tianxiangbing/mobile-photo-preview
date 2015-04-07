@@ -11,17 +11,29 @@
 		<style>
 		.preview-list img{width: 100px;height:100px;}
 		.preview-list a{display: inline-block;}
+		.icon-del{background:url(icon-del-img.png) no-repeat;display: inline-block;width:20px;height: 20px;background-size: 20px 20px;position: absolute;left: 50%;top:.5rem;z-index: 3;}
 		</style>
 	</head>
 	<body>
 		<div class="preview-list">
-			<a href="http://ott.wansecheng.com/weidian/wdgoods/1421661435860.jpg" class="preview" data-size="200*200"><img src="http://ott.wansecheng.com/weidian/wdgoods/1421661435860.jpg"></a>
-			<a href="http://ott.wansecheng.com/weidian/wdgoods/1421661435860.jpg" class="preview" data-size="200*200"><img src="http://ott.wansecheng.com/weidian/wdgoods/1421661435860.jpg"></a>
-			<a href="http://ott.wansecheng.com/weidian/wdgoods/1421661435860.jpg" class="preview" data-size="200*200"><img src="http://ott.wansecheng.com/weidian/wdgoods/1421661435860.jpg"></a>
+			<a href="http://ott.wansecheng.com/weidian/wdgoods/1421661435860.jpg" class="preview" ><img src="http://ott.wansecheng.com/weidian/wdgoods/1421661435860.jpg"></a>
+			<a href="http://ott.wansecheng.com/goods_image/201404/6920512702107/color.jpg" class="preview" ><img src="http://ott.wansecheng.com/goods_image/201404/6920512702107/color.jpg"></a>
+			<a href="https://ss0.bdstatic.com/5a21bjqh_Q23odCf/static/superplus/img/logo_white_ee663702.png" class="preview" ><img src="https://ss0.bdstatic.com/5a21bjqh_Q23odCf/static/superplus/img/logo_white_ee663702.png"></a>
 		</div>
 		<script>
 		var photoPreview = new MobilePhotoPreview();
-		photoPreview.init({target:$('.preview-list'),trigger:'.preview'});
+		photoPreview.init({
+			target: $('.preview-list'),
+			trigger: '.preview',
+			show: function(c) {
+				var del = $('<span class="icon-del"><span>');
+				$('.imgViewTop', c).append(del);
+				del.tap(function() {
+					photoPreview.current.remove();
+					photoPreview.hide();
+				});
+			}
+		});
 		</script>
 	</body>
 </html>
