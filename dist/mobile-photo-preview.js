@@ -6,16 +6,17 @@
  * Contact: 55342775@qq.com
  */
 ;
-(function(root, factory, $) {
+(function(root, factory) {
 	//amd
 	if (typeof define === 'function' && define.amd) {
-		define([], factory);
-	} else if (typeof exports === 'object') {//umd
+		define(['$', 'dialog'], factory);
+	} else if (typeof exports === 'object') { //umd
 		module.exports = factory();
 	} else {
-		root.MobilePhotoPreview = factory();
+		root.MobilePhotoPreview = factory($, Dialog);
 	}
-})(this, function() {
+})(this, function($, Dialog) {
+	$.alert(1)
 	//jquery plugin
 	$.fn.MobilePhotoPreview = function(settings) {
 		$(this).each(function() {
@@ -121,7 +122,6 @@
 				} else {
 					mode = Math.floor(mod);
 				}
-				console.log(mode);
 				_this.currentIndex = mode;
 				if (istartleft < end.x) {
 					_this.currentIndex--;
@@ -176,7 +176,7 @@
 					_this.format(c);
 					_this.bindSlide();
 					_this.go(true);
-					_this.settings.show && _this.settings.show(_this.dialog.dialogContainer);
+					_this.settings.show && _this.settings.show.call(_this, _this.dialog.dialogContainer);
 				}
 			}, {});
 			_this.dialog.init(options);
@@ -237,8 +237,8 @@
 		setSize: function() {
 			var _this = this;
 			var c = _this.dialog.dialogContainer;
-			var clientHeight = Math.min(document.documentElement.clientHeight, document.body.clientHeight);
-			var clientWidth = Math.min(document.documentElement.clientWidth, document.body.clientWidth);
+			var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+			var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
 			this.maxHeight = clientHeight - $('.imgViewTop', c).height() - $('.imgTitle', c).height();
 			this.maxWidth = clientWidth;
 			_this.imgPreview.width(this.maxWidth * _this.arr.length);
@@ -273,4 +273,4 @@
 		}
 	};
 	return MobilePhotoPreview;
-}, window.Zepto || window.jQuery || $)
+})

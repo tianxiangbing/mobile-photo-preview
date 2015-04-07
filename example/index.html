@@ -1,4 +1,4 @@
-﻿<!DOCTYPE>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<title>图片预览</title>
@@ -6,7 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="../dist/dialog.min.css">
 		<link rel="stylesheet" type="text/css" href="../dist/mobile-photo-preview.min.css">
 		<script type="text/javascript" src="../dist/zepto.min.js"></script>
-		<script type="text/javascript" src="../dist/dialog-jquery.js"></script>
+		<script type="text/javascript" src="../dist/dialog.min.js"></script>
 		<script type="text/javascript" src="../dist/mobile-photo-preview.js"></script>
 		<style>
 		.preview-list img{width: 100px;height:100px;}
@@ -26,9 +26,10 @@
 			show: function(c) {
 				var del = $('<span class="icon-del"><span>');
 				$('.imgViewTop', c).append(del);
+				var _this = this;
 				del.tap(function() {
-					photoPreview.current.remove();
-					photoPreview.hide();
+					_this.current.remove();
+					_this.hide();
 				});
 			}
 		});
