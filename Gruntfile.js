@@ -54,7 +54,7 @@ module.exports = function(grunt) {
 			dest: 'dist/',
 			flatten: true,
 			filter: 'isFile',
-		},
+		}
 	};
 	config.watch={
 		scripts:{

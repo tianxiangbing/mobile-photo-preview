@@ -16,7 +16,6 @@
 		root.MobilePhotoPreview = factory($, Dialog);
 	}
 })(this, function($, Dialog) {
-	$.alert(1)
 	//jquery plugin
 	$.fn.MobilePhotoPreview = function(settings) {
 		$(this).each(function() {
@@ -40,7 +39,7 @@
 		init: function(settings) {
 			this.settings = $.extend({}, settings);
 			this.target = $(this.settings.target);
-			this.trigger = this.settings.trigger;
+			this.trigger = this.settings.trigger || "a";
 			this.bindEvent();
 		},
 		touch: function(obj, parent, fn) {
