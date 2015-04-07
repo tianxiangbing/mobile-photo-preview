@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Mobile-photo-preview by tianxiangbing</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Mobile-photo-preview</h1>
+        <h2>手机端图片查看预览</h2>
+        <a href="https://github.com/tianxiangbing/mobile-photo-preview" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="mobile-photo-preview" class="anchor" href="#mobile-photo-preview" aria-hidden="true"><span class="octicon octicon-link"></span></a>mobile-photo-preview</h1>
+
+<p>手机端图片查看预览
+<img src="/example/mobile-photo-preview.png" alt="预览效果:" title="点击预览效果"></p>
+
+<h1>
+<a id="使用方法案例" class="anchor" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E6%A1%88%E4%BE%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>使用方法案例:</h1>
+
+<pre><code>    var photoPreview = new MobilePhotoPreview();
+    photoPreview.init({
+        target: $('.preview-list'),
+        trigger: '.preview',
+        show: function(c) {
+            var del = $('&lt;span class="icon-del"&gt;&lt;span&gt;');
+            $('.imgViewTop', c).append(del);
+            del.tap(function() {
+                photoPreview.current.remove();
+                photoPreview.hide();
+            });
+        }
+    });
+</code></pre>
+
+<h2>
+<a id="或者" class="anchor" href="#%E6%88%96%E8%80%85" aria-hidden="true"><span class="octicon octicon-link"></span></a>或者：</h2>
+
+<pre><code>    $('.preview-list').MobilePhotoPreview({
+        trigger: '.preview',
+        show: function(c) {
+            var del = $('&lt;span class="icon-del"&gt;&lt;span&gt;');
+            $('.imgViewTop', c).append(del);
+            var _this = this;
+            del.tap(function() {
+                _this.current.remove();
+                _this.hide();
+            });
+        }
+    });
+</code></pre>
+
+<p><em>注：两种方法没有本质的区别，推荐第一种。</em></p>
+
+<h1>
+<a id="api-属性方法及回调" class="anchor" href="#api-%E5%B1%9E%E6%80%A7%E6%96%B9%E6%B3%95%E5%8F%8A%E5%9B%9E%E8%B0%83" aria-hidden="true"><span class="octicon octicon-link"></span></a>API 属性、方法及回调：</h1>
+
+<h2>
+<a id="target" class="anchor" href="#target" aria-hidden="true"><span class="octicon octicon-link"></span></a>target:</h2>
+
+<pre><code>    表示是在这个容器内的元素会触发事件，它是一个范围，与trigger一同使用，委托事件节点，所以是必须的。建议不作根结点的委托.
+</code></pre>
+
+<h2>
+<a id="trigger" class="anchor" href="#trigger" aria-hidden="true"><span class="octicon octicon-link"></span></a>trigger:</h2>
+
+<pre><code>    表示触发事件的对象，它可以是动态的，默认是target下面的a链接触发
+</code></pre>
+
+<h2>
+<a id="show" class="anchor" href="#show" aria-hidden="true"><span class="octicon octicon-link"></span></a>show:</h2>
+
+<pre><code>    显示之后的回调，参数是dialog容器，当前this指向MobilePhotoPreview的实例。这是一个为了扩展更多功能的回调方法。为了更好的用到这个回调，你可以会对下面的属性有兴趣了解
+</code></pre>
+
+<h1>
+<a id="this下的属性及方法" class="anchor" href="#this%E4%B8%8B%E7%9A%84%E5%B1%9E%E6%80%A7%E5%8F%8A%E6%96%B9%E6%B3%95" aria-hidden="true"><span class="octicon octicon-link"></span></a>this下的属性及方法：</h1>
+
+<h2>
+<a id="current" class="anchor" href="#current" aria-hidden="true"><span class="octicon octicon-link"></span></a>current:</h2>
+
+<pre><code>    当前的结点对象
+</code></pre>
+
+<h2>
+<a id="currentindex" class="anchor" href="#currentindex" aria-hidden="true"><span class="octicon octicon-link"></span></a>currentIndex:</h2>
+
+<pre><code>    当前索引
+</code></pre>
+
+<h2>
+<a id="objarr" class="anchor" href="#objarr" aria-hidden="true"><span class="octicon octicon-link"></span></a>objArr:</h2>
+
+<pre><code>    数组对象，在这里，你可以得到一个集合，包括索引、element、宽、高。这将会是很有用的东西。
+</code></pre>
+
+<h2>
+<a id="hide" class="anchor" href="#hide" aria-hidden="true"><span class="octicon octicon-link"></span></a>hide:</h2>
+
+<pre><code>    调用的是dialog的hide.
+</code></pre>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/tianxiangbing/mobile-photo-preview/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/tianxiangbing/mobile-photo-preview/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/tianxiangbing/mobile-photo-preview"></a> is maintained by <a href="https://github.com/tianxiangbing">tianxiangbing</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
