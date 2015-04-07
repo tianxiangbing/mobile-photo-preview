@@ -10,7 +10,7 @@
 		<script type="text/javascript" src="../dist/mobile-photo-preview.js"></script>
 		<style>
 		.preview-list img{width: 100px;height:100px;}
-		.preview-list a{display: inline-block;}
+		.preview-list a{display: inline-block;background-color: #ccc;}
 		.icon-del{background:url(icon-del-img.png) no-repeat;display: inline-block;width:20px;height: 20px;background-size: 20px 20px;position: absolute;left: 50%;top:.5rem;z-index: 3;}
 		</style>
 	</head>
@@ -21,9 +21,7 @@
 			<a href="https://ss0.bdstatic.com/5a21bjqh_Q23odCf/static/superplus/img/logo_white_ee663702.png" class="preview" ><img src="https://ss0.bdstatic.com/5a21bjqh_Q23odCf/static/superplus/img/logo_white_ee663702.png"></a>
 		</div>
 		<script>
-		var photoPreview = new MobilePhotoPreview();
-		photoPreview.init({
-			target: $('.preview-list'),
+		$('.preview-list').MobilePhotoPreview({
 			trigger: '.preview',
 			show: function(c) {
 				var del = $('<span class="icon-del"><span>');
