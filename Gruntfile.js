@@ -72,12 +72,30 @@ module.exports = function(grunt) {
 			}
 		}
 	};
+	config.requirejs={
+		compile:{
+			options:{
+				banner: '/*! <%= pkg.name %>  v<%= pkg.version %>\n* author:<%=pkg.family%> email:<%=pkg.author.email%>\n* demo:<%=pkg.author.url%> \n* git:<%=pkg.git%>  <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+				"appDir": "src",
+				"baseUrl": ".",
+				"dir": "dest",
+				"modules": [{
+					"name": "mobile-photo-preview"
+				}],
+				"paths": {
+					"$": "zepto"
+				}
+			}
+		}
+	}
 	grunt.initConfig(config);
 	// 加载包含 "uglify" 任务的插件。
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-requirejs');
 	// 默认被执行的任务列表。
 	grunt.registerTask('default', ['uglify', 'cssmin', 'copy']);
+	//requirejs
 };

@@ -1,9 +1,8 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>图片预览</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-		<link rel="stylesheet" type="text/css" href="../dest/dialog.min.css">
 		<link rel="stylesheet" type="text/css" href="../dest/mobile-photo-preview.min.css">
 		<style>
 		.preview-list img{width: 100px;height:100px;}
@@ -17,21 +16,31 @@
 			<a href="http://ott.wansecheng.com/goods_image/201404/6920512702107/color.jpg" class="preview" ><img src="http://ott.wansecheng.com/goods_image/201404/6920512702107/color.jpg"></a>
 			<a href="https://ss0.bdstatic.com/5a21bjqh_Q23odCf/static/superplus/img/logo_white_ee663702.png" class="preview" ><img src="https://ss0.bdstatic.com/5a21bjqh_Q23odCf/static/superplus/img/logo_white_ee663702.png"></a>
 		</div>
-		<script type="text/javascript" src="../dist/zepto.min.js"></script>
-		<script type="text/javascript" src="../dist/dialog.min.js"></script>
-		<script type="text/javascript" src="../dist/mobile-photo-preview.js"></script>
-		<script>
-		$('.preview-list').MobilePhotoPreview({
-			trigger: '.preview',
-			show: function(c) {
-				var del = $('<span class="icon-del"><span>');
-				$('.imgViewTop', c).append(del);
-				var _this = this;
-				del.tap(function() {
-					_this.current.remove();
-					_this.hide();
-				});
-			}
+		<script type="text/javascript" src="../dest/require.js"></script>
+		<script type="text/javascript">
+		requirejs.config({
+			//By default load any module IDs from js/lib
+			baseUrl: '../dest',
+			paths: {
+				$: 'zepto'
+			},
+			packages: ['cart', 'store']
+		});
+		require(['mobile-photo-preview'], function(MPP) {
+			var mpp = new MPP();
+			mpp .init({
+				target:'.preview-list',
+				trigger: '.preview',
+				show: function(c) {
+					var del = $('<span class="icon-del"><span>');
+					$('.imgViewTop', c).append(del);
+					var _this = this;
+					del.tap(function() {
+						_this.current.remove();
+						_this.hide();
+					});
+				}
+			});
 		});
 		</script>
 	</body>
