@@ -36,12 +36,14 @@
 		this.arr = [];
 		this.objArr = {};
 		this.dialog;
+		this.bloom = true;
 	};
 	MobilePhotoPreview.prototype = {
 		init: function(settings) {
 			this.settings = $.extend({}, settings);
 			this.target = $(this.settings.target);
 			this.trigger = this.settings.trigger || "a";
+			this.bloom = this.settings.bloom;
 			this.bindEvent();
 		},
 		touch: function(obj, parent, fn) {
@@ -104,10 +106,17 @@
 					y: e.changedTouches[0].pageY
 				};
 				var curPos = $(this).position();
-				$(this).css({
-					left: curPos.left + (end.x - start.x),
-					top: curPos.top + (end.y - start.y)
-				});
+				if(!_this.bloom){
+					//只移动x轴
+					$(this).css({
+						left: curPos.left + (end.x - start.x)
+					});
+				}else{
+					$(this).css({
+						left: curPos.left + (end.x - start.x),
+						top: curPos.top + (end.y - start.y)
+					});
+				}
 				start = end;
 				return false;
 			});
@@ -209,22 +218,26 @@
 				if (i == _this.currentIndex) {
 					isdisplay = 'style="display:block;"';
 				}
-				html += '<div ' + isdisplay + '><img src="' + item.attr('href') + '"/></div>';
-				(function(item, i) {
+				var src = item.attr('href') || item.children('input').val() || item.children('img').attr('src');
+				html += '<div ' + isdisplay + '><img src="' + src + '"/></div>';
+				(function(item, i, src) {
 					setTimeout(function() {
 						var img = new Image();
-						img.src = item.attr('href');
+						img.src = src;
 						if (img.complete) {
 							setObj.call(img, i);
 						} else {
 							img.onreadystatechange = function() {
-								if (this.readystate == "complete") {
+								if (this.readystate == "complete" || this.readyState == "loaded") {
 									setObj.call(this, i);
 								}
 							}
+							img.onload = function() {
+								setObj.call(this, i);
+							}
 						}
 					});
-				})(item, i);
+				})(item, i, src);
 			}
 			_this.imgPreview.html(html);
 			setTimeout(function() {
