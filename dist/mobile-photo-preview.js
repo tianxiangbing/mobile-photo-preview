@@ -81,15 +81,24 @@
 			var _this = this;
 			var start = {},
 				istartleft = 0,
-				end = {};
+				end = {},
+				move = false;
 			_this.imgPreview.on('touchstart', function(e) {
 				start = {
 					x: e.changedTouches[0].pageX,
 					y: e.changedTouches[0].pageY
 				};
+				if (e.targetTouches.length == 2) {
+					move = false;
+					return false;
+				}
 				istartleft = e.changedTouches[0].pageX;
 			});
 			_this.imgPreview.on('touchmove', function(e) {
+				if (e.targetTouches.length == 2) {
+					return false;
+				}
+				move = true;
 				end = {
 					x: e.changedTouches[0].pageX,
 					y: e.changedTouches[0].pageY
@@ -107,6 +116,10 @@
 					x: e.changedTouches[0].pageX,
 					y: e.changedTouches[0].pageY
 				};
+				if (e.targetTouches.length == 1) {
+					start = end;
+					return false;
+				}
 				var curPos = $(this).position();
 				var stopPos = {
 					left: curPos.left + (end.x - start.x),
@@ -134,6 +147,7 @@
 					_this.currentIndex = _this.arr.length - 1;
 				}
 				_this.go();
+				move = false;
 			});
 		},
 		go: function(noanimate) {
@@ -259,7 +273,7 @@
 			if (this.maxWidth < obj.width) {
 				obj.elem.width(this.maxWidth);
 				var h = this.maxWidth * obj.height / obj.width;
-				obj.elem.width(w);
+				obj.elem.height(h);
 				obj.height = h;
 				obj.width = this.maxWidth;
 			}
