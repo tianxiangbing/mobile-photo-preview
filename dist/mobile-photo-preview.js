@@ -36,14 +36,14 @@
 		this.arr = [];
 		this.objArr = {};
 		this.dialog;
-		this.bloom = true;
+		this.bloom;
 	};
 	MobilePhotoPreview.prototype = {
 		init: function(settings) {
 			this.settings = $.extend({}, settings);
 			this.target = $(this.settings.target);
 			this.trigger = this.settings.trigger || "a";
-			this.bloom = this.settings.bloom;
+			this.bloom = this.settings.bloom || false;
 			this.bindEvent();
 		},
 		touch: function(obj, parent, fn) {
@@ -106,12 +106,12 @@
 					y: e.changedTouches[0].pageY
 				};
 				var curPos = $(this).position();
-				if(!_this.bloom){
+				if (!_this.bloom) {
 					//只移动x轴
 					$(this).css({
 						left: curPos.left + (end.x - start.x)
 					});
-				}else{
+				} else {
 					$(this).css({
 						left: curPos.left + (end.x - start.x),
 						top: curPos.top + (end.y - start.y)
