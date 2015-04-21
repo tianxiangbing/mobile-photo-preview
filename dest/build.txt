@@ -1,17 +1,11 @@
 
-dialog.min.css
+dialog.css
 ----------------
-dialog.min.css
+dialog.css
 
 mobile-photo-preview.css
 ----------------
 mobile-photo-preview.css
-
-mobile-photo-preview.min.css
-----------------
-dialog.min.css
-mobile-photo-preview.css
-mobile-photo-preview.min.css
 
 mobile-photo-preview.js
 ----------------
