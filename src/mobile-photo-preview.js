@@ -231,7 +231,7 @@
 					isdisplay = 'style="display:block;"';
 				}
 				var src = item.attr('href') || item.find('input').val() || item.find('img').attr('src');
-				html += '<div ' + isdisplay + '><img src="' + src + '"/></div>';
+				html += '<div ' + isdisplay + '></div>';
 				(function(item, i, src) {
 					setTimeout(function() {
 						var img = new Image();
@@ -248,7 +248,7 @@
 								setObj.call(this, i);
 							}
 						}
-					});
+					},100);
 				})(item, i, src);
 			}
 			_this.imgPreview.html(html);
@@ -258,11 +258,14 @@
 
 			function setObj(i) {
 				length++;
+				var obj = $(_this.imgPreview.children().get(i));
+				var img  = $(this);
+				obj.html(img);
 				_this.objArr[i] = {
 					src: this.src,
 					height: this.height,
 					width: this.width,
-					elem: $(_this.imgPreview.children().get(i)).find('img'),
+					elem: img,
 					index: i
 				};
 				_this.objArr.length = length;
