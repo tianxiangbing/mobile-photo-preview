@@ -211,7 +211,7 @@
 					_this.go(false);
 					_this.settings.show && _this.settings.show.call(_this, _this.dialog.dialogContainer);
 					_this.imgPreview.on('click', function() {
-						_self.hide();
+						_self.dispose();
 					});
 				}
 			}, {});
@@ -248,7 +248,7 @@
 								setObj.call(this, i);
 							}
 						}
-					},100);
+					}, 100);
 				})(item, i, src);
 			}
 			_this.imgPreview.html(html);
@@ -259,8 +259,9 @@
 			function setObj(i) {
 				length++;
 				var obj = $(_this.imgPreview.children().get(i));
-				var img  = $(this);
+				var img = $(this);
 				obj.html(img);
+				obj.css('background', 'transparent');
 				_this.objArr[i] = {
 					src: this.src,
 					height: this.height,
@@ -316,4 +317,4 @@
 		}
 	};
 	return MobilePhotoPreview;
-})
+});

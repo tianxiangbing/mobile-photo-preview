@@ -41,8 +41,15 @@ module.exports = function(grunt) {
 				expand: true,
 				cwd: 'src',
 				src: ['*.css', '!*.min.css'],
-				dest: 'dist',
-				ext: '.min.css'
+				dest: 'dist'
+			}]
+		},
+		requirecssmin: {
+			files: [{
+				expand: true,
+				cwd: 'src',
+				src: ['*.css', '!*.min.css'],
+				dest: 'dest'
 			}]
 		}
 	};
@@ -80,7 +87,8 @@ module.exports = function(grunt) {
 				"baseUrl": ".",
 				"dir": "dest",
 				"modules": [{
-					"name": "mobile-photo-preview"
+					"name": "mobile-photo-preview",
+					"exclude":["$"]
 				}],
 				"paths": {
 					"$": "zepto"
@@ -98,4 +106,5 @@ module.exports = function(grunt) {
 	// 默认被执行的任务列表。
 	grunt.registerTask('default', ['uglify', 'cssmin', 'copy']);
 	//requirejs
+	grunt.registerTask('require',['requirejs','cssmin:requirecssmin'])
 };

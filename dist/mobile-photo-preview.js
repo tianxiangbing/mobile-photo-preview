@@ -211,7 +211,7 @@
 					_this.go(false);
 					_this.settings.show && _this.settings.show.call(_this, _this.dialog.dialogContainer);
 					_this.imgPreview.on('click', function() {
-						_self.hide();
+						_self.dispose();
 					});
 				}
 			}, {});

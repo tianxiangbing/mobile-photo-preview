@@ -5,10 +5,10 @@ dialog.css
 
 mobile-photo-preview.css
 ----------------
+dialog.css
 mobile-photo-preview.css
 
 mobile-photo-preview.js
 ----------------
-zepto.js
 dialog.js
 mobile-photo-preview.js

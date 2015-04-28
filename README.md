@@ -1,5 +1,6 @@
 # mobile-photo-preview
 手机端图片查看预览
+例子见[DEMO](http://www.lovewebgames.com/jsmodule/mobile-photo-preview.html)  
 ![预览效果:](/example/mobile-photo-preview.png "点击预览效果")
 #使用方法案例:
 		var photoPreview = new MobilePhotoPreview();
