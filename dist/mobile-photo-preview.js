@@ -230,7 +230,7 @@
 				if (i == _this.currentIndex) {
 					isdisplay = 'style="display:block;"';
 				}
-				var src = item.attr('href') || item.find('input').val() || item.find('img').attr('src');
+				var src = item.attr('href') || item.find('input').val() || item.find('img').attr('src')||item.attr('src');
 				html += '<div ' + isdisplay + '></div>';
 				(function(item, i, src) {
 					setTimeout(function() {
@@ -248,7 +248,7 @@
 								setObj.call(this, i);
 							}
 						}
-					},100);
+					}, 100);
 				})(item, i, src);
 			}
 			_this.imgPreview.html(html);
@@ -259,8 +259,9 @@
 			function setObj(i) {
 				length++;
 				var obj = $(_this.imgPreview.children().get(i));
-				var img  = $(this);
+				var img = $(this);
 				obj.html(img);
+				obj.css('background', 'transparent');
 				_this.objArr[i] = {
 					src: this.src,
 					height: this.height,
@@ -316,4 +317,4 @@
 		}
 	};
 	return MobilePhotoPreview;
-})
+});

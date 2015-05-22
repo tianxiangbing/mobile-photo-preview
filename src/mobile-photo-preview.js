@@ -230,7 +230,7 @@
 				if (i == _this.currentIndex) {
 					isdisplay = 'style="display:block;"';
 				}
-				var src = item.attr('href') || item.find('input').val() || item.find('img').attr('src');
+				var src = item.attr('href') || item.find('input').val() || item.find('img').attr('src')||item.attr('src');
 				html += '<div ' + isdisplay + '></div>';
 				(function(item, i, src) {
 					setTimeout(function() {

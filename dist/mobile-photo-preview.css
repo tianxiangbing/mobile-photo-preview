@@ -8,7 +8,7 @@
  * Contact: 55342775@qq.com
  */
 .ui-preview{background-color: #000;border:none;color:#fff;}
-#imgPreview>div{background:url(loading.gif) no-repeat center center;background-size: 2rem 2rem; height:100%;float:left;box-sizing:border-box;display: inline-block;font-size: 0;position: relative;}
+#imgPreview>div{background:url(loading.gif) no-repeat center center;background-size: 4rem 4rem; height:100%;float:left;box-sizing:border-box;display: inline-block;font-size: 0;position: relative;}
 #imgPreview>div img{position:absolute;}
 .ui-preview .imgViewTop{height: 24px;line-height: 24px;}
 .ui-preview .ui-dialog-close{font-size:24px;z-index: 2;line-height: 1;right:0;padding:0 10px 3px 10px;}

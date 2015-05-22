@@ -24,10 +24,9 @@
 			baseUrl: '../dest',
 			paths: {
 				$: 'zepto'
-			},
-			packages: ['cart', 'store']
+			}
 		});
-		require(['mobile-photo-preview'], function(MPP) {
+		require(['mobile-photo-preview','$'], function(MPP,$) {
 			var mpp = new MPP();
 			mpp .init({
 				target:'.preview-list',
