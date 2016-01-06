@@ -16,7 +16,7 @@
 			<a href="http://oss.aliyuncs.com/wanse-att/aftersales/131039_1435917278_1.jpg" class="preview" ><img src="http://oss.aliyuncs.com/wanse-att/aftersales/131039_1435917278_1.jpg"></a>
 			<a href="http://oss.aliyuncs.com/wanse-att/aftersales/131039_1435917279_2.jpg" class="preview" ><img src="http://oss.aliyuncs.com/wanse-att/aftersales/131039_1435917279_2.jpg"></a>
 		</div>
-		<script type="text/javascript" src="../dist/zepto.min.js"></script>
+		<script type="text/javascript" src="../src/jquery-1.11.2.js"></script>
 		<script type="text/javascript" src="../dist/dialog.min.js"></script>
 		<script type="text/javascript" src="../src/mobile-photo-preview.js"></script>
 		<script>
@@ -26,7 +26,7 @@
 				var del = $('<span class="icon-del"></span>');
 				$('.imgViewTop', c).append(del);
 				var _this = this;
-				del.tap(function() {
+				del.click(function() {
 					_this.current.remove();
 					_this.hide();
 				});
